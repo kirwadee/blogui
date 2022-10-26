@@ -33,7 +33,7 @@ const SearchPage = () => {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         {posts.map((post) => (
-          <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={post?._id}>
             <Link
               to={`/post/${post._id}`}
               style={{ textDecoration: "none", color: "inherit" }}

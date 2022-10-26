@@ -49,7 +49,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts`);
+        const res = await axios.get("/posts");
         setPosts(res.data);
       } catch (err) {
         console.log(err);
@@ -57,6 +57,8 @@ const Home = () => {
     };
     fetchData();
   }, []);
+
+  console.log(posts);
 
   const firstpost = posts.slice(0, 1);
   const restposts = posts.slice(1, 8);
@@ -69,7 +71,7 @@ const Home = () => {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         {firstpost.map((fpost) => (
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Grid item xs={12} sm={12} md={12} lg={12} key={fpost?._id}>
             <Link
               to={`/post/${fpost._id}`}
               style={{ textDecoration: "none", color: "inherit" }}
@@ -105,7 +107,7 @@ const Home = () => {
           </Grid>
         ))}
         {restposts.map((post) => (
-          <Grid item xs={12} sm={6} md={4} lg={4}>
+          <Grid item xs={12} sm={6} md={4} lg={4} key={post?._id}>
             <Link
               to={`/post/${post._id}`}
               style={{ textDecoration: "none", color: "inherit" }}
